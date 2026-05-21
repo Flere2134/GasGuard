@@ -218,15 +218,25 @@ void publishTelemetry(float ppm, float temp,
 
   // Build JSON payload
   StaticJsonDocument<256> doc;
-  doc["device"]   = DEVICE_NAME;
-  doc["ppm"]      = serialized(String(ppm, 2));
-  doc["temp"]     = (temp == -999.0) ? nullptr : serialized(String(temp, 1));
-  doc["humidity"] = (humidity == -999.0) ? nullptr : serialized(String(humidity, 1));
-  doc["status"]   = status;
-  doc["valve"]    = isValveClosed() ? "CLOSED" : "OPEN";
-  doc["fan"]      = isFanRunning()  ? "ON"     : "OFF";
-  doc["ip"]       = getIPAddress();
-  doc["uptime"]   = millis() / 1000; // Uptime in seconds
+  doc["device"]  = DEVICE_NAME;
+  doc["ppm"]     = ppm;
+  doc["status"]  = status;
+  doc["valve"]   = isValveClosed() ? "CLOSED" : "OPEN";
+  doc["fan"]     = isFanRunning()  ? "ON"     : "OFF";
+  doc["ip"]      = getIPAddress();
+  doc["uptime"]  = millis() / 1000;
+
+  if (temp == -999.0) {
+    doc["temp"] = nullptr;
+  } else {
+    doc["temp"] = temp;
+  }
+
+  if (humidity == -999.0) {
+    doc["humidity"] = nullptr;
+  } else {
+    doc["humidity"] = humidity;
+  }
 
   char payload[256];
   serializeJson(doc, payload);
@@ -267,7 +277,7 @@ void publishAlert(const char* level, float ppm) {
   StaticJsonDocument<128> doc;
   doc["device"] = DEVICE_NAME;
   doc["level"]  = level;
-  doc["ppm"]    = serialized(String(ppm, 2));
+  doc["ppm"]    = ppm;
   doc["valve"]  = isValveClosed() ? "CLOSED" : "OPEN";
   doc["fan"]    = isFanRunning()  ? "ON"     : "OFF";
   doc["uptime"] = millis() / 1000;
