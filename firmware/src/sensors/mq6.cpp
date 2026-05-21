@@ -43,9 +43,6 @@ static const float CURVE_B = -2.95;
 // ==========================================
 // Sets the MQ-6 analog pin as input and
 // performs a warm-up delay reminder via Serial.
-// Note: The MQ-6 requires 24-48 hours of
-// burn-in for first-time use, and at least
-// 3 minutes of warm-up on every power cycle.
 // ==========================================
 void initMQ6() {
   pinMode(PIN_MQ6_ANALOG, INPUT);
