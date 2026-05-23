@@ -2,7 +2,7 @@
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
-#include "../connectivity/wifi_manager.h"
+#include "wifi_manager.h"
 #include "../actuators/lcd_display.h"
 #include "../actuators/servo_valve.h"
 #include "../actuators/exhaust_fan.h"
