@@ -4,18 +4,18 @@
 // ==========================================
 // WiFi Configuration
 // ==========================================
-#define WIFI_SSID         "YOUR_WIFI_SSID"
-#define WIFI_PASSWORD     "YOUR_WIFI_PASSWORD"
+#define WIFI_SSID         "Group 4605"  // Replace with your WiFi SSID
+#define WIFI_PASSWORD     "group4605lang"
 #define WIFI_TIMEOUT_MS   15000       // 15 seconds before WiFi connection times out
 
 // ==========================================
 // MQTT Configuration
 // ==========================================
-#define MQTT_BROKER       "YOUR_MQTT_BROKER_IP" //IP address or hostname of your MQTT broker
+#define MQTT_BROKER       "broker.hivemq.com" //IP address or hostname of your MQTT broker
 #define MQTT_PORT         1883
 #define MQTT_CLIENT_ID    "gasguard-esp32"
-#define MQTT_USERNAME     "YOUR_MQTT_USERNAME"  // Leave blank if no auth: ""
-#define MQTT_PASSWORD     "YOUR_MQTT_PASSWORD"  // Leave blank if no auth: ""
+#define MQTT_USERNAME     ""  // Leave blank if no auth: ""
+#define MQTT_PASSWORD     ""  // Leave blank if no auth: ""
 
 // MQTT Topics — Publish (ESP32 → Broker)
 #define MQTT_TOPIC_TELEMETRY   "gasguard/telemetry"  // Sensor data (ppm, temp, humidity, status)
