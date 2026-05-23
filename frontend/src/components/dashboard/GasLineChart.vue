@@ -58,8 +58,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler,
-  annotations,
+  Filler
 }                           from "chart.js"
 import BaseCard             from "@/components/common/BaseCard.vue"
 import { useSensorStore }   from "@/stores/sensorStore"

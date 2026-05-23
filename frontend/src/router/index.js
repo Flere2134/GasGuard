@@ -113,12 +113,12 @@ router.beforeEach(async (to, from, next) => {
   // fires for the first time in initAuth().
   if (authStore.isLoading) {
     await new Promise((resolve) => {
-      const unwatch = authStore.$subscribe(() => {
+      const interval = setInterval(() => {
         if (!authStore.isLoading) {
-          unwatch()
+          clearInterval(interval)
           resolve()
         }
-      })
+      }, 50)
     })
   }
 
