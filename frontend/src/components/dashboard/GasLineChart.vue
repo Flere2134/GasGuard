@@ -13,11 +13,14 @@
 ========================================== -->
 
 <template>
-  <BaseCard icon="📈" title="Gas Level History">
+  <BaseCard title="Gas Level History">
+    <template #icon>
+      <vue-feather type="trending-up" size="14" />
+    </template>
 
     <!-- Empty state -->
     <div v-if="!hasData" class="empty-state">
-      <span class="empty-icon">📡</span>
+      <vue-feather type="wifi-off" size="32" />
       <p class="empty-text">Waiting for sensor data...</p>
       <p class="empty-sub">Chart will appear once the ESP32 starts sending readings.</p>
     </div>

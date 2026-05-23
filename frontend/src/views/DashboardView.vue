@@ -40,7 +40,7 @@
       <!-- Offline Banner -->
       <transition name="slide-down">
         <div v-if="!realtime.isOnline.value" class="offline-banner">
-          <span>📡</span>
+          <vue-feather type="wifi-off" size="14" />
           <span>Device offline — showing last known data. Check ESP32 connection.</span>
         </div>
       </transition>

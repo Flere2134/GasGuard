@@ -13,7 +13,10 @@
 ========================================== -->
 
 <template>
-  <BaseCard icon="🔔" title="Alert Log">
+  <BaseCard title="Alert Log">
+    <template #icon>
+      <vue-feather type="bell" size="14" />
+    </template>
 
     <!-- Filter Tabs -->
     <div class="filter-tabs">
@@ -45,7 +48,7 @@
       v-else-if="filteredAlerts.length === 0"
       class="center-state"
     >
-      <span class="empty-icon">✅</span>
+      <vue-feather type="check-circle" size="28" />
       <p class="empty-text">No {{ activeFilter === "ALL" ? "" : activeFilter.toLowerCase() }} alerts recorded.</p>
       <p class="empty-sub">The system has been running cleanly.</p>
     </div>

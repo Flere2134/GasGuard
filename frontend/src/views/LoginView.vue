@@ -28,26 +28,22 @@
 
       <div class="feature-list">
         <div class="feature-item">
-          <span class="feature-icon">📡</span>
+          <vue-feather type="radio" size="18" style="color:antiquewhite"/>
           <span class="feature-text">Real-time gas monitoring</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">🔔</span>
+          <vue-feather type="bell" size="18" style="color:antiquewhite"/>
           <span class="feature-text">Instant leak alerts</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">🎛️</span>
+          <vue-feather type="sliders" size="18" style="color:antiquewhite"/>
           <span class="feature-text">Remote valve and fan control</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">📈</span>
+          <vue-feather type="trending-up" size="18" style="color:antiquewhite"/>
           <span class="feature-text">Live sensor data dashboard</span>
         </div>
       </div>
-
-      <p class="left-footer">
-        Group 5 — IoT Systems Design
-      </p>
     </div>
 
     <!-- Right Panel — Login Form -->
@@ -56,7 +52,7 @@
 
         <!-- Header -->
         <div class="login-header">
-          <span class="login-icon">🔐</span>
+          <vue-feather type="lock" size="28" />
           <h2 class="login-title">Welcome back</h2>
           <p class="login-sub">Sign in to access your dashboard</p>
         </div>
@@ -101,7 +97,40 @@
                 @click="showPassword = !showPassword"
                 :aria-label="showPassword ? 'Hide password' : 'Show password'"
               >
-                {{ showPassword ? "🙈" : "👁️" }}
+                <!-- Eye icon — show when password is hidden -->
+                <svg
+                  v-if="!showPassword"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16" height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+
+                <!-- Eye-off icon — show when password is visible -->
+                <svg
+                  v-else
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16" height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8
+                          a18.45 18.45 0 0 1 5.06-5.94"/>
+                  <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8
+                          a18.5 18.5 0 0 1-2.16 3.19"/>
+                  <line x1="1"  y1="1"  x2="23" y2="23"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -302,11 +331,15 @@ async function handleLogin() {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  padding: 0;
-  opacity: 0.6;
+  padding: 4px;
+  color: #888780;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.15s;
 }
-.password-toggle:hover { opacity: 1; }
+.password-toggle:hover { color:#2C2C2A; }
 
 /* Error message */
 .error-msg {

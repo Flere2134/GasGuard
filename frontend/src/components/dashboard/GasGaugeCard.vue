@@ -8,7 +8,10 @@
 ========================================== -->
 
 <template>
-  <BaseCard icon="💨" title="Gas Concentration (LPG)">
+  <BaseCard title="Gas Concentration (LPG)">
+    <template #icon>
+      <vue-feather type="droplet" size="14" />
+    </template>
 
     <!-- Main PPM Display -->
     <div class="ppm-display">
@@ -60,7 +63,7 @@
 
       <!-- Valve State -->
       <div class="state-item">
-        <span class="state-icon">🔧</span>
+        <vue-feather type="settings" size="18" />
         <div class="state-info">
           <span class="state-label">Valve</span>
           <span
@@ -77,7 +80,7 @@
 
       <!-- Fan State -->
       <div class="state-item">
-        <span class="state-icon">🌀</span>
+        <vue-feather type="wind" size="18" />
         <div class="state-info">
           <span class="state-label">Exhaust Fan</span>
           <span
@@ -94,7 +97,7 @@
 
       <!-- Uptime -->
       <div class="state-item">
-        <span class="state-icon">⏱</span>
+        <vue-feather type="clock" size="18" />
         <div class="state-info">
           <span class="state-label">Uptime</span>
           <span class="state-value state-neutral">

@@ -16,6 +16,7 @@ import { createPinia }  from "pinia"
 import App              from "./App.vue"
 import router           from "./router"
 import { useAuthStore } from "./stores/authStore"
+import VueFeather       from "vue-feather"
 
 // Import global styles
 import "./assets/styles/main.css"
@@ -31,6 +32,7 @@ const app = createApp(App)
 const pinia = createPinia()
 app.use(pinia)
 app.use(router)
+app.component("vue-feather", VueFeather)
 
 // ==========================================
 // Initialize Firebase Auth

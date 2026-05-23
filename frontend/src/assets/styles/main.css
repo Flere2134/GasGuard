@@ -131,3 +131,8 @@ button:focus-visible {
   white-space: nowrap;
   border-width: 0;
 }
+/* Feather icon alignment */
+.feather {
+  vertical-align: middle;
+  flex-shrink: 0;
+}

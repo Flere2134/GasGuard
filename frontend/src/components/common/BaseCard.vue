@@ -22,7 +22,10 @@
     <div v-if="$slots.header || title" class="card-header">
       <slot name="header">
         <div class="card-title">
-          <span v-if="icon" class="card-icon" aria-hidden="true">{{ icon }}</span>
+          <span v-if="$slots.icon" class="card-icon" aria-hidden="true">
+            <slot name="icon"></slot>
+          </span>
+          <span v-else-if="icon" class="card-icon" aria-hidden="true">{{ icon }}</span>
           <span class="card-title-text">{{ title }}</span>
         </div>
       </slot>

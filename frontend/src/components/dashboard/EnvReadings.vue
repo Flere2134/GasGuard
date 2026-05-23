@@ -7,12 +7,15 @@
 ========================================== -->
 
 <template>
-  <BaseCard icon="🌡️" title="Environment">
+  <BaseCard title="Environment">
+    <template #icon>
+      <vue-feather type="thermometer" size="14" />
+    </template>
 
     <!-- Temperature -->
     <div class="reading-row">
       <div class="reading-icon-wrap temp">
-        <span class="reading-icon">🌡️</span>
+        <vue-feather type="thermometer" size="18" />
       </div>
       <div class="reading-info">
         <span class="reading-label">Temperature</span>
@@ -43,7 +46,7 @@
     <!-- Humidity -->
     <div class="reading-row">
       <div class="reading-icon-wrap humid">
-        <span class="reading-icon">💧</span>
+        <vue-feather type="droplet" size="18" />
       </div>
       <div class="reading-info">
         <span class="reading-label">Humidity</span>

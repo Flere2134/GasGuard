@@ -36,7 +36,7 @@
         @click="onAlertBellClick"
         aria-label="View alerts"
       >
-        <span class="bell-icon">🔔</span>
+        <vue-feather type="bell" size="18" />
         <span
           v-if="alertStore.unreadCount > 0"
           class="badge"

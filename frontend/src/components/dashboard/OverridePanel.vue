@@ -14,11 +14,14 @@
 ========================================== -->
 
 <template>
-  <BaseCard icon="🎛️" title="Manual Overrides">
+  <BaseCard title="Manual Overrides">
+    <template #icon>
+      <vue-feather type="sliders" size="14" />
+    </template>
 
     <!-- Warning Banner -->
     <div class="warning-banner">
-      <span class="warning-icon">⚠️</span>
+      <vue-feather type="alert-triangle" size="14" class="warning-icon" />
       <span class="warning-text">
         Manual overrides bypass automatic safety logic.
         Use with caution.
@@ -31,7 +34,7 @@
       <!-- Exhaust Fan Toggle -->
       <div class="control-row">
         <div class="control-info">
-          <span class="control-icon">🌀</span>
+          <vue-feather type="wind" size="20" />
           <div class="control-details">
             <span class="control-label">Exhaust Fan</span>
             <span
@@ -58,7 +61,7 @@
       <!-- Gas Valve Toggle -->
       <div class="control-row">
         <div class="control-info">
-          <span class="control-icon">🔧</span>
+          <vue-feather type="settings" size="20" />
           <div class="control-details">
             <span class="control-label">Gas Valve</span>
             <span
