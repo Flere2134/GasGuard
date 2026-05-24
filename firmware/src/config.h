@@ -4,8 +4,8 @@
 // ==========================================
 // WiFi Configuration
 // ==========================================
-#define WIFI_SSID         "Group 4605"  // Replace with your WiFi SSID
-#define WIFI_PASSWORD     "group4605lang"
+#define WIFI_SSID         "Xiaomi Arboleda Fam"  // Replace with your WiFi SSID
+#define WIFI_PASSWORD     "A052620H"  // Replace with your WiFi password
 #define WIFI_TIMEOUT_MS   15000       // 15 seconds before WiFi connection times out
 
 // ==========================================
