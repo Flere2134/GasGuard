@@ -30,7 +30,7 @@ void initExhaustFan() {
   pinMode(PIN_RELAY_FAN, OUTPUT);
 
   // Ensure fan is OFF on boot
-  digitalWrite(PIN_RELAY_FAN, RELAY_OFF);
+  digitalWrite(PIN_RELAY_FAN, RELAY_ON);
   currentFanState = FAN_OFF;
 
   Serial.println("[FAN] Exhaust fan relay initialized.");
@@ -45,9 +45,9 @@ void initExhaustFan() {
   // it clicks and the fan responds correctly.
   // The fan will spin for 500ms then stop.
   Serial.println("[FAN] Running startup relay test (500ms)...");
-  digitalWrite(PIN_RELAY_FAN, RELAY_ON);
-  delay(500);
   digitalWrite(PIN_RELAY_FAN, RELAY_OFF);
+  delay(500);
+  digitalWrite(PIN_RELAY_FAN, RELAY_ON);
   Serial.println("[FAN] Startup test complete. Fan is OFF.");
 }
 
@@ -68,7 +68,7 @@ void startFan() {
     return; // Already running — do nothing
   }
 
-  digitalWrite(PIN_RELAY_FAN, RELAY_ON);
+  digitalWrite(PIN_RELAY_FAN, RELAY_OFF);
   currentFanState = FAN_ON;
 
   Serial.println("[FAN] *** FAN STARTED — Ventilating area ***");
@@ -94,7 +94,7 @@ void stopFan() {
     return; // Already stopped — do nothing
   }
 
-  digitalWrite(PIN_RELAY_FAN, RELAY_OFF);
+  digitalWrite(PIN_RELAY_FAN, RELAY_ON);
   currentFanState = FAN_OFF;
 
   Serial.println("[FAN] Fan stopped.");
