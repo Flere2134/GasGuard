@@ -39,15 +39,17 @@ static unsigned long lastReconnectAttempt = 0;
 // override commands to the ESP32 hardware.
 // ==========================================
 static void onMessageReceived(char* topic, byte* payload, unsigned int length) {
-  // Convert byte payload to a null-terminated string
+  // Convert byte payload to a null-terminated string safely
   char message[length + 1];
   memcpy(message, payload, length);
   message[length] = '\0';
 
-  Serial.printf("[MQTT] Message received on topic: %s\n", topic);
+  // Cast topic to an Arduino String for reliable comparison
+  String strTopic = String(topic);
+  
+  Serial.printf("[MQTT] Message received on topic: %s\n", strTopic.c_str());
   Serial.printf("[MQTT] Payload: %s\n", message);
 
-  // Parse the JSON payload
   StaticJsonDocument<64> doc;
   DeserializationError error = deserializeJson(doc, message);
 
@@ -56,40 +58,42 @@ static void onMessageReceived(char* topic, byte* payload, unsigned int length) {
     return;
   }
 
-  const char* state = doc["state"];
-  if (!state) {
-    Serial.println("[MQTT] ERROR: No 'state' key found in payload.");
+  // Cast the state value to an Arduino String
+  String strState = doc["state"].as<String>();
+  
+  if (strState.length() == 0 || strState == "null") {
+    Serial.println("[MQTT] ERROR: No valid 'state' key found in payload.");
     return;
   }
 
   // --- Handle fan override command ---
-  if (strcmp(topic, MQTT_TOPIC_CMD_FAN) == 0) {
-    if (strcmp(state, "ON") == 0) {
+  if (strTopic.equals(String(MQTT_TOPIC_CMD_FAN))) {
+    if (strState.equals("ON")) {
       Serial.println("[MQTT] Override: Fan turned ON remotely.");
       startFan();
-    } else if (strcmp(state, "OFF") == 0) {
+    } else if (strState.equals("OFF")) {
       Serial.println("[MQTT] Override: Fan turned OFF remotely.");
       stopFan();
     } else {
-      Serial.printf("[MQTT] ERROR: Unknown fan state: %s\n", state);
+      Serial.printf("[MQTT] ERROR: Unknown fan state: %s\n", strState.c_str());
     }
   }
 
   // --- Handle valve override command ---
-  else if (strcmp(topic, MQTT_TOPIC_CMD_VALVE) == 0) {
-    if (strcmp(state, "CLOSE") == 0) {
+  else if (strTopic.equals(String(MQTT_TOPIC_CMD_VALVE))) {
+    if (strState.equals("CLOSE")) {
       Serial.println("[MQTT] Override: Valve CLOSED remotely.");
       closeValve();
-    } else if (strcmp(state, "OPEN") == 0) {
+    } else if (strState.equals("OPEN")) {
       Serial.println("[MQTT] Override: Valve OPENED remotely.");
       openValve();
     } else {
-      Serial.printf("[MQTT] ERROR: Unknown valve state: %s\n", state);
+      Serial.printf("[MQTT] ERROR: Unknown valve state: %s\n", strState.c_str());
     }
   }
 
   else {
-    Serial.printf("[MQTT] WARNING: Unhandled topic: %s\n", topic);
+    Serial.printf("[MQTT] WARNING: Unhandled topic: %s\n", strTopic.c_str());
   }
 }
 
