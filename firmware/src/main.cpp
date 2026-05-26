@@ -14,6 +14,7 @@
 // Timing Variables
 unsigned long lastSensorReadTime  = 0;
 unsigned long lastMqttPublishTime = 0;
+static AlertState previousState = (AlertState)-1;
 
 // Setup
 void setup() {
@@ -61,10 +62,10 @@ void loop() {
   if (currentTime - lastSensorReadTime >= SENSOR_READ_INTERVAL_MS) {
     lastSensorReadTime = currentTime;
 
-    // Read sensor values
-    float ppm      = readMQ6PPM();
-    float temp     = readDHT22Temperature();
-    float humidity = readDHT22Humidity();
+    // Read sensor values and floor the data results
+    float ppm      = floor(readMQ6PPM());
+    float temp     = floor(readDHT22Temperature());
+    float humidity = floor(readDHT22Humidity());
 
     // Print to Serial Monitor for debugging
     Serial.println("------ Sensor Reading ------");
@@ -73,47 +74,53 @@ void loop() {
     Serial.printf("[DHT22] Humidity   : %.2f %%\n", humidity);
 
     // --- Evaluate Alert State ---
-    AlertState state = evaluateAlertState(ppm);
+    AlertState currentState = evaluateAlertState(ppm);
 
-    // --- Execute Local Response Based on State ---
-    switch (state) {
+    // --- Execute Local Response ONLY on State Change ---
+    if (currentState != previousState) {
+      previousState = currentState;
 
-      case ALERT_SAFE:
-        Serial.println("[STATUS] SAFE");
-        setLEDState(LED_SAFE);
-        stopBuzzer();
-        openValve();
-        stopFan();
-        lcdShowStatus(STATUS_SAFE, ppm, temp, humidity);
-        break;
+      switch (currentState) {
+        case ALERT_SAFE:
+          Serial.println("[STATUS] Transition to SAFE");
+          setLEDState(LED_SAFE);
+          stopBuzzer();
+          openValve();
+          stopFan();
+          break;
 
-      case ALERT_WARNING:
-        Serial.println("[STATUS] WARNING");
-        setLEDState(LED_WARNING);
-        buzzerWarning();
-        openValve();
-        stopFan();
-        lcdShowStatus(STATUS_WARNING, ppm, temp, humidity);
-        break;
+        case ALERT_WARNING:
+          Serial.println("[STATUS] Transition to WARNING");
+          setLEDState(LED_WARNING);
+          buzzerWarning();
+          openValve();
+          stopFan();
+          break;
 
-      case ALERT_DANGER:
-        Serial.println("[STATUS] DANGER — Executing mitigations...");
-        setLEDState(LED_DANGER);
-        buzzerDanger();
-        closeValve();
-        startFan();
-        lcdShowStatus(STATUS_DANGER, ppm, temp, humidity);
-        break;
+        case ALERT_DANGER:
+          Serial.println("[STATUS] Transition to DANGER — Executing mitigations...");
+          setLEDState(LED_DANGER);
+          buzzerDanger();
+          closeValve();
+          startFan();
+          break;
+      }
     }
+
+    // --- Always update the LCD with fresh sensor readings ---
+    // (This happens every loop so the screen numbers stay live)
+    if (currentState == ALERT_SAFE)        lcdShowStatus(STATUS_SAFE, ppm, temp, humidity);
+    else if (currentState == ALERT_WARNING) lcdShowStatus(STATUS_WARNING, ppm, temp, humidity);
+    else if (currentState == ALERT_DANGER)  lcdShowStatus(STATUS_DANGER, ppm, temp, humidity);
 
     // --- Publish Telemetry to MQTT ---
     if (currentTime - lastMqttPublishTime >= MQTT_PUBLISH_INTERVAL_MS) {
       lastMqttPublishTime = currentTime;
 
-      publishTelemetry(ppm, temp, humidity, alertStateToString(state));
+      publishTelemetry(ppm, temp, humidity, alertStateToString(currentState));
 
-      if (state == ALERT_DANGER || state == ALERT_WARNING) {
-        publishAlert(alertStateToString(state), ppm);
+      if (currentState == ALERT_DANGER || currentState == ALERT_WARNING) {
+        publishAlert(alertStateToString(currentState), ppm);
       }
     }
   }
