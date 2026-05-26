@@ -90,9 +90,19 @@ app.use(helmet());
 // In production, restrict origin to your
 // actual frontend domain.
 app.use(cors({
-  origin: NODE_ENV === "production"
-    ? process.env.FRONTEND_URL        // e.g. "https://gasguard.web.app"
-    : "http://localhost:5173",        // Vite default dev server port
+  origin: function (origin, callback) {
+    if (NODE_ENV === "production") {
+      // Strict in production
+      if (origin === process.env.FRONTEND_URL) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    } else {
+      // Permissive in development (allows localhost, 127.0.0.1, and local Network IPs)
+      callback(null, true);
+    }
+  },
   methods:            ["GET", "POST"],
   allowedHeaders:     ["Content-Type", "Authorization"],
   credentials:        true,
