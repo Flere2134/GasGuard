@@ -190,28 +190,43 @@ const override          = useOverride()
 const showValveConfirm  = ref(false)
 
 // ==========================================
-// Fan Toggle Handler
+// Fan Toggle Handler (UPDATED)
 // ==========================================
 async function handleFanToggle() {
-  const turnOn = !sensorStore.isFanRunning
-  await override.sendFanOverride(turnOn)
+  // 1. Calculate the desired state
+  const turnOn = !sensorStore.isFanRunning;
+  
+  // 2. Send the command via the composable
+  const result = await override.sendFanOverride(turnOn);
+  
+  // 3. Optimistic Update: If the API says success, flip the UI switch
+  if (result.success) {
+    sensorStore.isFanRunning = turnOn;
+  }
 }
 
 // ==========================================
-// Valve Toggle Handler
+// Valve Toggle Handlers (UPDATED)
 // ==========================================
-// Closing the valve requires a confirmation
-// dialog since it physically cuts gas supply.
-// Opening the valve proceeds immediately.
-// ==========================================
-function handleValveToggle() {
+async function handleValveToggle() {
   if (!sensorStore.isValveClosed) {
-    // Valve is open → user wants to close it
-    // Show confirmation dialog first
-    showValveConfirm.value = true
+    showValveConfirm.value = true;
   } else {
-    // Valve is closed → open it immediately
-    override.sendValveOverride(true)
+    // Valve is closed -> opening it
+    const result = await override.sendValveOverride(true);
+    if (result.success) {
+      sensorStore.isValveClosed = false; // Optimistic Update
+    }
+  }
+}
+
+async function confirmCloseValve() {
+  showValveConfirm.value = false;
+  
+  const result = await override.sendValveOverride(false);
+  
+  if (result.success) {
+    sensorStore.isValveClosed = true; // Optimistic Update
   }
 }
 
