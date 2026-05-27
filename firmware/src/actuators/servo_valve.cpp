@@ -20,8 +20,8 @@ static const int SERVO_MAX_US       = 2400;
 // IMPORTANT: You must manually calibrate these numbers!
 // These define exactly how long the motor spins. 
 // For example, if 450ms turns the valve exactly 90 degrees, set it to 450.
-static const int TIME_TO_OPEN_MS  = 200; 
-static const int TIME_TO_CLOSE_MS = 200;
+static const int TIME_TO_OPEN_MS  = 250; 
+static const int TIME_TO_CLOSE_MS = 170;
 
 // ==========================================
 // haltAndDetachServo()
@@ -31,7 +31,7 @@ static const int TIME_TO_CLOSE_MS = 200;
 // ==========================================
 static void haltAndDetachServo() {
   valveServo.write(90); // 90 is the theoretical stop point for 360 servos
-  delay(50);            // Brief pause to let the motor brake
+  delay(300);            // Brief pause to let the motor brake
   valveServo.detach();  // Cut the signal entirely
   Serial.println("[SERVO] Signal detached. Motor locked in position.");
 }
@@ -63,7 +63,7 @@ void openValve() {
   valveServo.attach(PIN_SERVO, SERVO_MIN_US, SERVO_MAX_US);
   
   // 2. Spin forward (adjust 180 to a lower number like 110 for slower speed)
-  valveServo.write(180); 
+  valveServo.write(10); 
   
   // 3. Wait for the precise calibrated time
   delay(TIME_TO_OPEN_MS);
