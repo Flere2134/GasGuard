@@ -4,8 +4,8 @@
 // ==========================================
 // WiFi Configuration
 // ==========================================
-#define WIFI_SSID         "Xiaomi Arboleda Fam"  // Replace with your WiFi SSID
-#define WIFI_PASSWORD     "A052620H"  // Replace with your WiFi password
+#define WIFI_SSID         "ZTE_2.4_Ktgqwc"  // Replace with your WiFi SSID
+#define WIFI_PASSWORD     "onetwothreefourfive"  // Replace with your WiFi password
 #define WIFI_TIMEOUT_MS   15000       // 15 seconds before WiFi connection times out
 
 // ==========================================
@@ -90,7 +90,7 @@
 // ==========================================
 // System Info
 // ==========================================
-#define DEVICE_NAME       "GasGuard-v1"
-#define FIRMWARE_VERSION  "1.0.0"
+#define DEVICE_NAME       "GasGuard-v1.2"
+#define FIRMWARE_VERSION  "1.2.0"
 
 #endif // CONFIG_H
