@@ -229,11 +229,6 @@ async function confirmCloseValve() {
     sensorStore.isValveClosed = true; // Optimistic Update
   }
 }
-
-async function confirmCloseValve() {
-  showValveConfirm.value = false
-  await override.sendValveOverride(false)
-}
 </script>
 
 <style scoped>
