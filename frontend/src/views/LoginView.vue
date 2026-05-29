@@ -219,8 +219,8 @@ async function handleLogin() {
   gap: 10px;
 }
 .brand-logo {
-  width: 72px;
-  height: 72px;
+  width: 128px;
+  height: 128px;
   object-fit: contain;
 }
 
