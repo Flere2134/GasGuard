@@ -125,7 +125,7 @@ const realtime = useRealtime()
 <style scoped>
 .dashboard-page {
   min-height: 100vh;
-  background: #F1EFE8;
+  background: #202A44;
   display: flex;
   flex-direction: column;
 }

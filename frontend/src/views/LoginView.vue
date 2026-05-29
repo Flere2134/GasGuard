@@ -199,7 +199,7 @@ async function handleLogin() {
 .login-page {
   display: flex;
   min-height: 100vh;
-  background: #1B1212;
+  background: #202A44;
 }
 
 /* Left Panel */

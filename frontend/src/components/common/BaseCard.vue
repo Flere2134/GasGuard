@@ -60,7 +60,7 @@ defineProps({
 
 <style scoped>
 .base-card {
-  background: #ffffff;
+  background: #fbfcf8;
   border: 0.5px solid #e0e0d8;
   border-radius: 12px;
   overflow: hidden;

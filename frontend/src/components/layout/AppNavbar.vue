@@ -14,7 +14,6 @@
     <div class="navbar-left">
       <div class="logo">
         <img src="/gasguard-text-logo.png" alt="GasGuard Logo" class="navbar-logo" />
-        <span class="logo-text">GasGuard</span>
       </div>
       <span class="version">v1.0</span>
     </div>
@@ -117,7 +116,7 @@ async function handleLogout() {
   justify-content: space-between;
   padding: 0 20px;
   height: 56px;
-  background: #ffffff;
+  background: #fbfcf8;
   border-bottom: 0.5px solid #e0e0d8;
   position: sticky;
   top: 0;

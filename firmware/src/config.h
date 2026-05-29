@@ -90,7 +90,7 @@
 // ==========================================
 // System Info
 // ==========================================
-#define DEVICE_NAME       "GasGuard-v1.2"
-#define FIRMWARE_VERSION  "1.2.0"
+#define DEVICE_NAME       "GasGuard"
+#define FIRMWARE_VERSION  "1.0.0"
 
 #endif // CONFIG_H
