@@ -210,7 +210,7 @@ async function handleLogin() {
   flex-direction: column;
   justify-content: center;
   padding: 48px;
-  background: #2C2C2A;
+  background: #b5b5ad;
   gap: 40px;
 }
 .brand {
@@ -253,7 +253,7 @@ async function handleLogin() {
   padding: 40px 24px;
 }
 .login-card {
-  background: #ffffff;
+  background: #f4efeb;
   border: 0.5px solid #e0e0d8;
   border-radius: 16px;
   padding: 36px 32px;
