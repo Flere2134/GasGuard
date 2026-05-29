@@ -13,7 +13,7 @@
     <!-- Left — Logo -->
     <div class="navbar-left">
       <div class="logo">
-        <img src="/gasguard-logo.png" alt="GasGuard Logo" class="navbar-logo" />
+        <img src="/gasguard-text-logo.png" alt="GasGuard Logo" class="navbar-logo" />
         <span class="logo-text">GasGuard</span>
       </div>
       <span class="version">v1.0</span>
@@ -137,8 +137,8 @@ async function handleLogout() {
 }
 
 .navbar-logo {
-  width: 28px;
-  height: 28px;
+  width: 120px;
+  height: auto;
   object-fit: contain;
 }
 
