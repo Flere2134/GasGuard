@@ -19,7 +19,7 @@
     <!-- Left Panel — Branding -->
     <div class="login-left">
       <div class="brand">
-        <span class="brand-icon">🔥</span>
+        <img src="/gasguard-logo.png" alt="GasGuard Logo" class="brand-logo" />
         <h1 class="brand-name">GasGuard</h1>
         <p class="brand-tagline">
           IoT-Based LPG Leak Detection<br>and Safety System
@@ -218,7 +218,12 @@ async function handleLogin() {
   flex-direction: column;
   gap: 10px;
 }
-.brand-icon  { font-size: 40px; }
+.brand-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
 .brand-name  {
   font-size: 32px;
   font-weight: 600;
