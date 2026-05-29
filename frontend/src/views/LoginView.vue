@@ -210,7 +210,7 @@ async function handleLogin() {
   flex-direction: column;
   justify-content: center;
   padding: 48px;
-  background: #b5b5ad;
+  background: #F0EAD6;
   gap: 40px;
 }
 .brand {
@@ -241,8 +241,8 @@ async function handleLogin() {
   gap: 12px;
 }
 .feature-icon  { font-size: 18px; }
-.feature-text  { font-size: 14px; color: #D3D1C7; }
-.left-footer   { font-size: 12px; color: #5F5E5A; margin: 0; }
+.feature-text  { font-size: 14px; color: #32312a; }
+.left-footer   { font-size: 12px; color: #85847e; margin: 0; }
 
 /* Right Panel */
 .login-right {
@@ -253,8 +253,8 @@ async function handleLogin() {
   padding: 40px 24px;
 }
 .login-card {
-  background: #f4efeb;
-  border: 0.5px solid #e0e0d8;
+  background: #1B1212;
+  border: 0.5px solid #3b423e;
   border-radius: 16px;
   padding: 36px 32px;
   width: 100%;
