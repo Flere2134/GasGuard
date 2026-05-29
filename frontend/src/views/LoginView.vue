@@ -226,7 +226,7 @@ async function handleLogin() {
 
 .brand-tagline {
   font-size: 15px;
-  color: #888780;
+  color: #32312a;
   line-height: 1.6;
   margin: 0;
 }
