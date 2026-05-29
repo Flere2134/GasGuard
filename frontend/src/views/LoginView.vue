@@ -20,7 +20,6 @@
     <div class="login-left">
       <div class="brand">
         <img src="/gasguard-text-logo.png" alt="GasGuard Logo" class="brand-logo" />
-        <h1 class="brand-name">GasGuard</h1>
         <p class="brand-tagline">
           IoT-Based LPG Leak Detection<br>and Safety System
         </p>
@@ -28,19 +27,19 @@
 
       <div class="feature-list">
         <div class="feature-item">
-          <vue-feather type="radio" size="18" style="color:antiquewhite"/>
+          <vue-feather type="radio" size="18" style="color:#1B1212"/>
           <span class="feature-text">Real-time gas monitoring</span>
         </div>
         <div class="feature-item">
-          <vue-feather type="bell" size="18" style="color:antiquewhite"/>
+          <vue-feather type="bell" size="18" style="color:#1B1212"/>
           <span class="feature-text">Instant leak alerts</span>
         </div>
         <div class="feature-item">
-          <vue-feather type="sliders" size="18" style="color:antiquewhite"/>
+          <vue-feather type="sliders" size="18" style="color:#1B1212"/>
           <span class="feature-text">Remote valve and fan control</span>
         </div>
         <div class="feature-item">
-          <vue-feather type="trending-up" size="18" style="color:antiquewhite"/>
+          <vue-feather type="trending-up" size="18" style="color:#1B1212"/>
           <span class="feature-text">Live sensor data dashboard</span>
         </div>
       </div>
@@ -253,8 +252,8 @@ async function handleLogin() {
   padding: 40px 24px;
 }
 .login-card {
-  background: #1B1212;
-  border: 0.5px solid #3b423e;
+  background: #f4efeb;
+  border: 0.5px solid #e0e0d8;
   border-radius: 16px;
   padding: 36px 32px;
   width: 100%;
