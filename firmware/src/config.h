@@ -70,7 +70,7 @@
 // These values depend on your specific sensor and environment.
 // Calibrate these after physical sensor warm-up (allow 24-48 hours burn-in for new MQ-6)
 #define MQ6_RL_VALUE        10    // Load resistance on the MQ-6 board in kΩ (usually 10kΩ)
-#define MQ6_RO_CLEAN_AIR    9.83  // Sensor resistance ratio in clean air (calibrate this value)
+#define MQ6_RO_CLEAN_AIR    486  // Sensor resistance ratio in clean air (calibrate this value)
 #define MQ6_ADC_MAX         4095  // ESP32 ADC is 12-bit (0–4095)
 #define MQ6_VCC             3.3   // ESP32 ADC reference voltage
 

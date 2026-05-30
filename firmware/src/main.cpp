@@ -21,6 +21,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("  GasGuard System Starting...");
   Serial.println("  " + String(DEVICE_NAME) + " v" + String(FIRMWARE_VERSION));
+  // float ro = calibrateMQ6();
 
   // --- Initialize Actuators ---
   initLEDs();
