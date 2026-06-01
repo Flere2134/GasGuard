@@ -4,8 +4,8 @@
 // ==========================================
 // WiFi Configuration
 // ==========================================
-#define WIFI_SSID         "Logie's iPhone 11 Pro"  // Replace with your WiFi SSID
-#define WIFI_PASSWORD     "mimikyuu"  // Replace with your WiFi password
+#define WIFI_SSID         "Shieon"  // Replace with your WiFi SSID
+#define WIFI_PASSWORD     "1234515R"  // Replace with your WiFi password
 #define WIFI_TIMEOUT_MS   30000       // 30 seconds before WiFi connection times out
 
 // ==========================================
