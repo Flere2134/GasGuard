@@ -6,14 +6,14 @@
 // ==========================================
 #define WIFI_SSID         "Logie's iPhone 11 Pro"  // Replace with your WiFi SSID
 #define WIFI_PASSWORD     "mimikyuu"  // Replace with your WiFi password
-#define WIFI_TIMEOUT_MS   15000       // 15 seconds before WiFi connection times out
+#define WIFI_TIMEOUT_MS   30000       // 30 seconds before WiFi connection times out
 
 // ==========================================
 // MQTT Configuration
 // ==========================================
 #define MQTT_BROKER       "broker.hivemq.com" //IP address or hostname of your MQTT broker
 #define MQTT_PORT         1883
-#define MQTT_CLIENT_ID    "gasguard-esp32"
+#define MQTT_CLIENT_ID    "gasguard-esp32-unique-9921"
 #define MQTT_USERNAME     ""  // Leave blank if no auth: ""
 #define MQTT_PASSWORD     ""  // Leave blank if no auth: ""
 
